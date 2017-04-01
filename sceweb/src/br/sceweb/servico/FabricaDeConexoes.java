@@ -13,7 +13,7 @@ public class FabricaDeConexoes {
 		String url = "jdbc:mysql://localhost/sceweb";
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			return (Connection) DriverManager.getConnection(url,"root","");
+			return (Connection) DriverManager.getConnection(url,"root","684059");
 			}
 		catch (CommunicationsException e){
 			logger.info("Exceção de comunicacao com o DB causa: " + e.getMessage());

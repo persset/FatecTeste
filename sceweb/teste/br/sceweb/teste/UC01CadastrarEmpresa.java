@@ -25,7 +25,7 @@ public class UC01CadastrarEmpresa {
 		empresa.setNomeFantasia("empresa x");
 		empresa.setEndereco("rua taquari");
 		empresa.setTelefone("2222");
-
+ 
 	}
 	
 	@After

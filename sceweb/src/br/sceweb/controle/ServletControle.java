@@ -116,7 +116,7 @@ public class ServletControle extends HttpServlet {
 			empresa.setTelefone(telefone);
 			empresaDAO.adiciona(empresa);
 			msg = "cadastro realizado com sucesso";
-
+ 
 		} catch (Exception e) {
 			msg = e.getMessage();
 		}
@@ -127,7 +127,7 @@ public class ServletControle extends HttpServlet {
 	public Empresa consulta(String cnpj) {
 		logger.info("consulta empresa 2 = " + cnpj);
 		EmpresaDAO empresaDAO = new EmpresaDAO();
-		return empresaDAO.consultaEmpresa(cnpj);
+		return empresaDAO.consulta(cnpj);
 	}
 
 	public String excluirEmpresa(String cnpj) {

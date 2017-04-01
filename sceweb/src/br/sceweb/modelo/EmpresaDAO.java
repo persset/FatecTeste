@@ -31,7 +31,10 @@ public class EmpresaDAO {
 			codigoRetorno = ps.executeUpdate();
 			ps.close();
 		} catch (SQLException e) {
-			throw new RuntimeException(e); } return codigoRetorno;
+			throw new RuntimeException(e); 
+		}
+		
+		return codigoRetorno;
 
 	}
 	
@@ -49,11 +52,31 @@ public class EmpresaDAO {
 				throw new RuntimeException(e);
 			}
 			return codigoretorno;
-		}
+		} 
 
-	public Empresa consultaEmpresa(String cnpj) {
-		// TODO Auto-generated method stub
-		return null;
+	public Empresa consulta(String cnpj) {
+		Empresa empresa = null;
+		java.sql.PreparedStatement ps;
+		try(Connection conn= new FabricaDeConexoes().getConnection()) {
+			ps = conn.prepareStatement("select * from empresa where cnpj = ?");
+			ps.setString(1, cnpj);
+			ResultSet resultSet = ps.executeQuery();
+			while(resultSet.next()) {
+				empresa = new Empresa();
+				empresa.setCnpj(resultSet.getString("cnpj"));
+				empresa.setNomeDaEmpresa(resultSet.getString("nomeDaEmpresa"));
+				empresa.setNomeFantasia(resultSet.getString("nomeFantasia"));
+				empresa.setEndereco(resultSet.getString("endereco"));
+				empresa.setTelefone(resultSet.getString("telefone"));
+		} 
+		resultSet.close();
+		ps.close();
+		} 
+		catch (SQLException e) { 
+			throw new RuntimeException(e);
+		}
+		return empresa;
+
 	}
 }
 
